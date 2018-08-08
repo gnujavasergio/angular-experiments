@@ -19,6 +19,7 @@ export class CartComponent implements OnInit {
     return Object.keys(this.courses)
   }
 
+  // Iniciar datos 
   ngOnInit() {
     this.courses = this.cartService.getCourses()
     this.details = this.cartService.getDetails();

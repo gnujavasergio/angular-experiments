@@ -26,7 +26,7 @@ export class CartService {
   addToCart(course: ICourse) {
     if (!this.courses[course.id]) {
       this.courses[course.id] = {
-        quantty: 1,
+        quantity: 1,
         name: course.name,
         price: course.price
       }
