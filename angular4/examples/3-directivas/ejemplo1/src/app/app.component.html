@@ -1,0 +1,67 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <h1>
+    {{title}}!
+  </h1>  
+</div>
+<h2>ngIf</h2>
+<!-- 1 -->
+<ng-template [ngIf]="role.status">
+  <p>{{ role.name }}</p>
+</ng-template>
+<!-- 2-->
+<p *ngIf="role.status">{{ role.name }}</p>
+
+<!----------------------------------------->
+<h2>ngif else</h2>
+
+<ng-template [ngIf]="skill.experience >= 6" [ngIfElse]="junior" >
+  <p>Desarrollador Senior</p>
+</ng-template>
+<ng-template #junior>
+  <p>Desarrollador junior</p>
+</ng-template>
+
+<p *ngIf="skill.experiece <= 6; else senior">Desarrollador Junior</p>
+<ng-template #senior>
+  <p>Desarrollador Senior</p>
+</ng-template>
+
+<!------------------------------------------->
+<h2>ngIf then else</h2>
+<ng-template [ngIf]="employee.skills.length > 0" [ngIfThen]="showSkill" [ngIfElse]="notSkill">
+
+</ng-template>
+
+<ng-template #showSkill>
+  <div>
+      <h3>Habilidades</h3>
+      <p>{{ employee.firstName + ' ' + employee.lastName}}</p>
+      <p>{{ employee.skills[0].name }}</p>
+      <p>{{ employee.skills[1].name }}</p>
+  </div>
+  
+</ng-template>
+
+<ng-template #notSkill >
+  <p>Todabia no tiene habilidades</p>
+</ng-template>
+
+<ng-container *ngIf="employee.skills.length > 0; then thenSkill; else elseSkill">
+
+</ng-container>
+
+<ng-template #thenSkill>
+    <div>
+        <h3>Habilidades</h3>
+        <p>{{ employee.firstName + ' ' + employee.lastName}}</p>
+        <p>{{ employee.skills[0].name }}</p>
+        <p>{{ employee.skills[1].name }}</p>
+    </div>
+    
+  </ng-template>
+  
+  <ng-template #elseSkill>
+    <p>Todabia no tiene habilidades</p>
+  </ng-template>
